@@ -5,3 +5,7 @@
 .nav-links {
   @apply cursor-pointer hover:underline;
 }
+
+.btn{
+  @apply bg-[#f8f9fa] ring-gray-200 rounded-md focus:outline-none hover:ring-1 p-3 hover:shadow-md active:ring-gray-300 text-sm text-gray-800;
+ }

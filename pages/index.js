@@ -1,11 +1,14 @@
 import Head from 'next/head'
-import Image from 'next/image'
 
 import Avatar from '../components/Avatar'
 
-const avatar = "http://localhost:3000/images/profile-img.jpg"
+const avatar = "/images/profile-img.jpg"
 
-import { ViewGridIcon, MicrophoneIcone } from '@heroicons/react/solid'
+const google_logo = "/images/google.png"
+
+import { MicrophoneIcon, ViewGridIcon } from '@heroicons/react/solid'
+import { SearchIcon } from '@heroicons/react/outline'
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -44,7 +47,32 @@ export default function Home() {
       </header>
 
       <main>
-       
+        <form className="flex flex-col items-center mt-44 flex-grow">
+          <Image src={google_logo}
+            alt="google"
+            height={100}
+            width={300}/>
+
+          <div className="flex items-center border border-gray-200 px-3 py-2 mt-8 w-full hover:shadow-lg focus-within:shadow-lg rounded-full max-w-md sm:max-w-xl lg:max-w-2xl">
+            <SearchIcon
+             className="text-gray-500 h-5 mr-2"/>
+
+            <input type="text"
+              className="flex-grow focus:outline-none" />
+
+            <MicrophoneIcon className="h-5" />
+
+          </div>
+
+          <div className="flex flex-col space-y-2 w-1/2 justify-center mt-8 sm:space-y-0 sm:flex-row sm:space-x-4">
+
+            <button className="btn">Google Search</button>
+
+            <button className="btn">I am feeling lucky</button>
+
+          </div>
+
+        </form> 
       </main>
 
       <footer>
