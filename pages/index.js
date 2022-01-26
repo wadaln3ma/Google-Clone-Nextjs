@@ -10,8 +10,24 @@ const google_logo = "/images/google.png"
 import { MicrophoneIcon, ViewGridIcon } from '@heroicons/react/solid'
 import { SearchIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
+import {useRef} from 'react'
+import {useRouter} from 'next/router'
 
 export default function Home() {
+  const searchInputRef = useRef(null)
+  const router = useRouter()
+
+  const search = (e) =>{
+    e.preventDefault()
+
+    const term = searchInputRef.current.value
+
+    if (!term) return
+
+    router.push(`/search?term=${term}`)
+
+  }
+
   return (
     <div className="flex flex-col justify-between h-screen">
       <Head>
@@ -59,7 +75,7 @@ export default function Home() {
             <SearchIcon
              className="text-gray-500 h-5 mr-2"/>
 
-            <input type="text"
+            <input type="text" ref={searchInputRef}
               className="flex-grow focus:outline-none" />
 
             <MicrophoneIcon className="h-5" />
@@ -68,9 +84,9 @@ export default function Home() {
 
           <div className="flex flex-col space-y-2 w-1/2 justify-center mt-8 sm:space-y-0 sm:flex-row sm:space-x-4">
 
-            <button className="btn">Google Search</button>
+            <button onClick={search} className="btn">Google Search</button>
 
-            <button className="btn">I am feeling lucky</button>
+            <button onClick={search} className="btn">I am feeling lucky</button>
 
           </div>
 
